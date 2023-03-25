@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
+import { signIn, signOut, useSession } from 'next-auth/react';
 import { FaChevronDown } from 'react-icons/fa';
 import { BiSearch } from 'react-icons/bi';
 import { AiFillHome, AiOutlinePlus, AiOutlineMenu } from 'react-icons/ai';
@@ -9,6 +10,8 @@ import { RxSpeakerLoud } from 'react-icons/rx';
 import { GiSparkles } from 'react-icons/gi';
 
 const Header: React.FC = () => {
+	const { data: session } = useSession();
+
 	return (
 		<div className="sticky top-0 z-50 flex bg-white px-4 py-2 shadow-sm">
 			<div className="relative h-10 w-20 flex-shrink-0">
@@ -53,17 +56,41 @@ const Header: React.FC = () => {
 				<AiOutlineMenu className="icon" />
 			</div>
 
-			<div className="hidden lg:flex items-center space-x-2 border border-gray-100 p-2 cursor-pointer">
-				<div className="relative h-5 w-5 flex-shrink-0">
-					<Image
-						style={{ objectFit: 'contain' }}
-						src="https://links.papareact.com/23l"
-						fill
-						alt="auth"
-					/>
+			{session ? (
+				<div
+					onClick={() => signOut()}
+					className="hidden lg:flex items-center space-x-2 border border-gray-100 p-2 cursor-pointer"
+				>
+					<div className="relative h-5 w-5 flex-shrink-0">
+						<Image
+							style={{ objectFit: 'contain' }}
+							src="https://links.papareact.com/23l"
+							fill
+							alt="auth"
+						/>
+					</div>
+					<div className="flex-1 text-xs">
+						<p className="truncate">{session?.user?.name} </p>
+						<p className="text-gray-400">1 Karma</p>
+					</div>
+					<FaChevronDown className="h-5 flex-shrink-0 text-gray-400" />
 				</div>
-				<p className="text-gray-400">Sign In</p>
-			</div>
+			) : (
+				<div
+					onClick={() => signIn()}
+					className="hidden lg:flex items-center space-x-2 border border-gray-100 p-2 cursor-pointer"
+				>
+					<div className="relative h-5 w-5 flex-shrink-0">
+						<Image
+							style={{ objectFit: 'contain' }}
+							src="https://links.papareact.com/23l"
+							fill
+							alt="auth"
+						/>
+					</div>
+					<p className="text-gray-400">Sign In</p>
+				</div>
+			)}
 		</div>
 	);
 };
