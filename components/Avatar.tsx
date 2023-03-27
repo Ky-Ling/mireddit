@@ -11,7 +11,7 @@ const Avatar: React.FC<AvatarProps> = ({ seed, large }) => {
 	// const { data: session } = useSession();
 	const session = {
 		user: {
-			name: 'ss',
+			name: 'Torrid',
 		},
 	};
 
