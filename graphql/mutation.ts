@@ -16,7 +16,7 @@ export const ADD_POST = gql`
 			username: $username
 		) {
 			body
-			create_at
+			created_at
 			id
 			image
 			subreddit_id
@@ -31,7 +31,7 @@ export const ADD_SUBREDDIT = gql`
 		insertSubreddit(topic: $topic) {
 			id
 			topic
-			create_at
+			created_at
 		}
 	}
 `;

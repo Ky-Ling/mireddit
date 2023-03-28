@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSession } from 'next-auth/react';
-import { useMutation, useQuery } from '@apollo/client';
+import toast from 'react-hot-toast';
+import { useMutation } from '@apollo/client';
 import { useForm } from 'react-hook-form';
 import { AiOutlineLink } from 'react-icons/ai';
 import { HiPhotograph } from 'react-icons/hi';
@@ -36,8 +37,15 @@ const PostBox = () => {
 		formState: { errors },
 	} = useForm<FormData>();
 
+	const handleFormFieldsClear = () => {
+		setValue('postBody', '');
+		setValue('postTitle', '');
+		setValue('postImage', '');
+		setValue('subreddit', '');
+	};
+
 	const handlePostFormSubmit = handleSubmit(async (formData) => {
-		// await addPost(formData);
+		const notification = toast.loading('Creating new post...');
 
 		try {
 			const {
@@ -99,12 +107,16 @@ const PostBox = () => {
 
 				console.log('NEW POST Added: ', newPost);
 			}
+			handleFormFieldsClear();
 
-			setValue('postBody', '');
-			setValue('postTitle', '');
-			setValue('postImage', '');
-			setValue('subreddit', '');
-		} catch (error) {}
+			toast.success('New Post Created!', {
+				id: notification,
+			});
+		} catch (error) {
+			toast.error('Whoops, something went wrong!', {
+				id: notification,
+			});
+		}
 	});
 
 	return (

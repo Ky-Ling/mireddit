@@ -14,7 +14,7 @@ const Header: React.FC = () => {
 
 	return (
 		<div className="sticky top-0 z-50 flex bg-white px-4 py-2 shadow-sm">
-			<div className="relative h-10 w-20 flex-shrink-0">
+			<div className="relative h-10 w-20 flex-shrink-0 cursor-pointer">
 				<Image
 					style={{
 						objectFit: 'contain',
@@ -26,9 +26,9 @@ const Header: React.FC = () => {
 				/>
 			</div>
 			<div className="flex items-center mx-7 xl:min-w-[300px]">
-				<AiFillHome className="h-5 w-5" />
-				<p className="flex-1 ml-2 hidden lg:inline">Home</p>
-				<FaChevronDown className="h-5 w-5" />
+				<AiFillHome className="h-5 w-5 cursor-pointer" />
+				<p className="flex-1 ml-2 hidden lg:inline cursor-pointer">Home</p>
+				<FaChevronDown className="h-5 w-5 cursor-pointer" />
 			</div>
 
 			<form className="flex flex-1 items-center space-x-2 border border-gray-200 rounded-sm bg-gray-100 px-3 py-1">
