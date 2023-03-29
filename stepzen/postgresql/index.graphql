@@ -8,7 +8,7 @@ type comment {
 }
 
 type post {
-	vote: [vote] @materializer(query: "getVote")
+	votes: [vote] @materializer(query: "getVote")
 	username: String
 	title: String
 	subreddit_id: ID
@@ -16,7 +16,7 @@ type post {
 	image: String
 	id: ID!
 	created_at: DateTime
-	comment: [comment] @materializer(query: "getComment")
+	comments: [comment] @materializer(query: "getComment")
 	body: String
 }
 

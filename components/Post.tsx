@@ -35,6 +35,35 @@ const Post: React.FC<PostProps> = ({ post }) => {
 						&bull; Posted by u/{post.username} <TimAgo date={post.created_at} />
 					</p>
 				</div>
+
+				<div className="py-4">
+					<h2 className="text-xl font-semibold">{post.title}</h2>
+					<p className="mt-2 text-sm font-light">{post.body}</p>
+				</div>
+
+				<img src={post.image} className="w-full" />
+
+				<div className="flex space-x-4 text-gray-400">
+					<div className='postButtons'>
+						<HiOutlineChatAlt2 className='h-6 w-6'/>
+            <p className=''>{post?.comments?.length} Comments</p>
+					</div>
+					<div className='postButtons'>
+						<AiOutlineGift className='h-6 w-6'/>
+            <p className='hidden sm:inline'>Award</p>
+					</div>
+					<div className='postButtons'>
+						<AiOutlineShareAlt className='h-6 w-6'/>
+            <p className='hidden sm:inline'>Share</p>
+					</div>
+					<div className='postButtons'>
+						<BsBookmarkCheck className='h-6 w-6'/>
+            <p className='hidden sm:inline'>Save</p>
+					</div>
+					<div className='postButtons'>
+						<RxDotsHorizontal className='h-6 w-6'/>
+					</div>
+				</div>
 			</div>
 		</div>
 	);

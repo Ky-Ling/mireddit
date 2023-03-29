@@ -10,7 +10,7 @@ export default function Home() {
 			</Head>
 			<PostBox />
 
-			<div className="flex">
+			<div>
 				<Feed />
 			</div>
 		</div>
