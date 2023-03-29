@@ -11,7 +11,7 @@ export const GET_ALL_POSTS = gql`
 			subreddit_id
 			username
 
-			comment {
+			comments {
 				created_at
 				id
 				text
@@ -25,7 +25,7 @@ export const GET_ALL_POSTS = gql`
 				topic
 			}
 
-			vote {
+			votes {
 				created_at
 				id
 				post_id

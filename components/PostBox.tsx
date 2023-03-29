@@ -8,7 +8,7 @@ import { HiPhotograph } from 'react-icons/hi';
 import Avatar from './Avatar';
 import { ADD_POST, ADD_SUBREDDIT } from '@/graphql/mutation';
 import client from '@/apollo-client';
-import { GET_SUBREDDIT_BY_TOPIC } from '@/graphql/queries';
+import { GET_ALL_POSTS, GET_SUBREDDIT_BY_TOPIC } from '@/graphql/queries';
 
 type FormData = {
 	postTitle: string;
@@ -26,7 +26,9 @@ const PostBox = () => {
 		},
 	};
 
-	const [addPost] = useMutation(ADD_POST);
+	const [addPost] = useMutation(ADD_POST, {
+		refetchQueries: [GET_ALL_POSTS, 'postList'],
+	});
 	const [addSubreddit] = useMutation(ADD_SUBREDDIT);
 
 	const {
