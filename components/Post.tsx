@@ -10,7 +10,7 @@ import { BsBookmarkCheck } from 'react-icons/bs';
 import { HiOutlineChatAlt2 } from 'react-icons/hi';
 import { RxDotsHorizontal } from 'react-icons/rx';
 import TimAgo from 'react-timeago';
-
+import { Jelly } from '@uiball/loaders';
 import Avatar from './Avatar';
 
 interface PostProps {
@@ -18,6 +18,13 @@ interface PostProps {
 }
 
 const Post: React.FC<PostProps> = ({ post }) => {
+	if (!post)
+		return (
+			<div className="flex w-full items-center justify-center p-10 text-xl">
+				<Jelly size={50} color="#FF4501" />
+			</div>
+		);
+
 	return (
 		<Link href={`post/${post.id}`}>
 			<div className="flex cursor-pointer rounded-md border border-gray-300 bg-white shadow-sm hover:border hover:border-gray-600">

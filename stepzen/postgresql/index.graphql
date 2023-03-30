@@ -31,7 +31,7 @@ type vote {
 	username: String
 	upvote: Boolean
 	post_id: ID
-	post: post @materializer(query: "getPost")
+	post: post @materializer(query: "getPostByPostId")
 	id: ID!
 	created_at: DateTime
 }

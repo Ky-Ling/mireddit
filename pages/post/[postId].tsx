@@ -8,6 +8,7 @@ const PostItemPage = () => {
 	const {
 		query: { postId },
 	} = useRouter();
+
 	const { data } = useQuery(GET_POST_BY_POST_ID, {
 		variables: {
 			post_id: postId,
@@ -17,7 +18,7 @@ const PostItemPage = () => {
 	const post: Post = data?.getPostByPostId;
 
 	return (
-		<div>
+		<div className='mx-auto my-7 max-w-5xl'>
 			<Post post={post} />
 		</div>
 	);
