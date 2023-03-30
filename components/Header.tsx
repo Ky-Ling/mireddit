@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 import { signIn, signOut, useSession } from 'next-auth/react';
 import { FaChevronDown } from 'react-icons/fa';
@@ -13,17 +14,19 @@ const Header: React.FC = () => {
 	const { data: session } = useSession();
 
 	return (
-		<div className="sticky top-0 z-50 flex bg-white px-4 py-2 shadow-sm">
+		<div className="sticky top-0 z-50 flex bg-white px-4 py-2 shadow-sm items-center">
 			<div className="relative h-10 w-20 flex-shrink-0 cursor-pointer">
-				<Image
-					style={{
-						objectFit: 'contain',
-					}}
-					src="https://download.logo.wine/logo/Reddit/Reddit-Logo.wine.png"
-					fill
-					alt="logo"
-					priority
-				/>
+				<Link href="/">
+					<Image
+						style={{
+							objectFit: 'contain',
+						}}
+						src="https://download.logo.wine/logo/Reddit/Reddit-Logo.wine.png"
+						fill
+						alt="logo"
+						priority
+					/>
+				</Link>
 			</div>
 			<div className="flex items-center mx-7 xl:min-w-[300px]">
 				<AiFillHome className="h-5 w-5 cursor-pointer" />
