@@ -239,11 +239,9 @@ type Mutation {
 		username: String
 		post_id: ID
 		text: String
-		created_at: DateTime
 	): comment
 		@dbquery(
 			type: "postgresql"
-			schema: "public"
 			table: "comment"
 			dml: INSERT
 			configuration: "postgresql_config"
