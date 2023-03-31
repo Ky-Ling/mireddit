@@ -9,6 +9,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { ADD_COMMENT } from '@/graphql/mutation';
 import Avatar from '@/components/Avatar';
 import Timeago from 'react-timeago';
+import Loading from '@/components/Loading';
 
 type FormData = {
 	comment: string;
@@ -28,7 +29,7 @@ const PostItemPage = () => {
 	const [addComment] = useMutation(ADD_COMMENT, {
 		refetchQueries: [GET_POST_BY_POST_ID, 'getPostByPostId'],
 	});
-	const { data } = useQuery(GET_POST_BY_POST_ID, {
+	const { data, loading } = useQuery(GET_POST_BY_POST_ID, {
 		variables: {
 			post_id: postId,
 		},
@@ -60,7 +61,9 @@ const PostItemPage = () => {
 		});
 	};
 
-	return (
+	return loading ? (
+		<Loading />
+	) : (
 		<div className="mx-auto my-7 max-w-5xl">
 			<Post post={post} />
 
