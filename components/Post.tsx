@@ -26,14 +26,9 @@ interface PostProps {
 const Post: React.FC<PostProps> = ({ post }) => {
 	const router = useRouter();
 	const [vote, setVote] = useState<boolean>();
-	// const { data: session  } = useSession();
-	const session = {
-		user: {
-			name: 'Torrid',
-		},
-	};
+	const { data: session  } = useSession();
 
-	const { data, loading } = useQuery(GET_ALL_VOTES_BY_POST_ID, {
+	const { data } = useQuery(GET_ALL_VOTES_BY_POST_ID, {
 		variables: {
 			post_id: post?.id,
 		},

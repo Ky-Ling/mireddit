@@ -19,12 +19,7 @@ const PostItemPage = () => {
 	const {
 		query: { postId },
 	} = useRouter();
-	// const { data: session } = useSession();
-	const session = {
-		user: {
-			name: 'Torrid',
-		},
-	};
+	const { data: session } = useSession();
 
 	const [addComment] = useMutation(ADD_COMMENT, {
 		refetchQueries: [GET_POST_BY_POST_ID, 'getPostByPostId'],
@@ -50,7 +45,7 @@ const PostItemPage = () => {
 		await addComment({
 			variables: {
 				post_id: postId,
-				username: session.user.name,
+				username: session?.user?.name,
 				text: data.comment,
 			},
 		});

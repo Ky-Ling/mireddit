@@ -8,12 +8,7 @@ interface AvatarProps {
 }
 
 const Avatar: React.FC<AvatarProps> = ({ seed, large }) => {
-	// const { data: session } = useSession();
-	const session = {
-		user: {
-			name: 'Torrid',
-		},
-	};
+	const { data: session } = useSession();
 
 	return (
 		<div

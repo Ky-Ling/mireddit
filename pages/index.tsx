@@ -15,7 +15,6 @@ export default function Home() {
 
 	const subreddits: Subreddit[] = data?.getSubredditListLimit;
 
-	console.log(subreddits);
 	return (
 		<div className="max-w-5xl my-7 mx-auto">
 			<Head>
