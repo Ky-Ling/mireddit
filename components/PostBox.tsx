@@ -8,7 +8,7 @@ import { HiPhotograph } from 'react-icons/hi';
 import Avatar from './Avatar';
 import { ADD_POST, ADD_SUBREDDIT } from '@/graphql/mutation';
 import client from '@/apollo-client';
-import { GET_ALL_POSTS, GET_SUBREDDIT_BY_TOPIC } from '@/graphql/queries';
+import { GET_ALL_POSTS, GET_SUBREDDIT_BY_TOPIC, GET_ALL_POSTS_BY_TOPIC, GET_SUBREDDITS_WITH_LIMIT } from '@/graphql/queries';
 
 type FormData = {
 	postTitle: string;
@@ -23,10 +23,16 @@ interface PostBoxProps {
 
 const PostBox = ({ subreddit }: PostBoxProps) => {
 	const [imageBoxOpen, setImageBoxOpen] = useState(false);
-	const { data: session  } = useSession();
+	// const { data: session  } = useSession();
+
+	const session = {
+		user: {
+			name: 'Torrid'
+		}
+	}
 
 	const [addPost] = useMutation(ADD_POST, {
-		refetchQueries: [GET_ALL_POSTS, 'postList'],
+		refetchQueries: [GET_ALL_POSTS, GET_ALL_POSTS_BY_TOPIC, GET_SUBREDDITS_WITH_LIMIT],
 	});
 	const [addSubreddit] = useMutation(ADD_SUBREDDIT);
 
