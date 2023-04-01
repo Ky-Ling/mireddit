@@ -5,6 +5,7 @@ import { useQuery } from '@apollo/client';
 import { GET_SUBREDDITS_WITH_LIMIT } from '@/graphql/queries';
 import SubredditRow from '@/components/SubredditRow';
 import Loading from '@/components/Loading';
+import { Empty } from 'antd';
 
 export default function Home() {
 	const { data, loading } = useQuery(GET_SUBREDDITS_WITH_LIMIT, {
@@ -22,13 +23,13 @@ export default function Home() {
 			</Head>
 			<PostBox />
 
-			<div className="flex">
+			<div className="flex justify-end">
 				<Feed />
 				<div className="sticky top-36 mx-5 mt-5 hidden h-fit min-w-[300px] rounded-md border border-gray-300 bg-white lg:inline">
 					<p className="text-md mb-1 p-4 pb-3 font-bold">Top Communities</p>
 					{loading ? (
 						<Loading />
-					) : (
+					) : subreddits.length ? (
 						<div>
 							{subreddits?.map((subreddit, i) => (
 								<SubredditRow
@@ -37,6 +38,10 @@ export default function Home() {
 									index={i}
 								/>
 							))}
+						</div>
+					) : (
+						<div className="mb-5">
+							<Empty description="No communities" />
 						</div>
 					)}
 				</div>

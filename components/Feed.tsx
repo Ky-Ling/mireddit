@@ -1,6 +1,6 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
-import { Jelly } from '@uiball/loaders';
+import { Empty } from 'antd';
 
 import { GET_ALL_POSTS, GET_ALL_POSTS_BY_TOPIC } from '@/graphql/queries';
 import Post from './Post';
@@ -21,21 +21,17 @@ const Feed = ({ topic }: FeedProps) => {
 
 	const posts: Post[] = !topic ? data?.postList : data?.getPostListByTopic;
 
-	// TODO:Empty reminder
-	if (!posts?.length)
-		return (
-			<div className="flex w-full items-center justify-center p-10 text-xl">
-				<Jelly size={50} color="#FF4501" />
-			</div>
-		);
-
 	return loading ? (
 		<Loading />
-	) : (
+	) : posts.length ? (
 		<div className="mt-5 space-y-4">
-			{posts?.map((post) => (
+			{posts?.map((post: any) => (
 				<Post key={post.id} post={post} />
 			))}
+		</div>
+	) : (
+		<div className="flex items-center justify-center flex-1 cursor-pointer mt-5 ml-auto rounded-md border border-gray-300 bg-white shadow-sm">
+			<Empty description="No post yet" />
 		</div>
 	);
 };
