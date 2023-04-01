@@ -26,7 +26,7 @@ interface PostProps {
 const Post: React.FC<PostProps> = ({ post }) => {
 	const router = useRouter();
 	const [vote, setVote] = useState<boolean>();
-	const { data: session  } = useSession();
+	const { data: session } = useSession();
 
 	const { data } = useQuery(GET_ALL_VOTES_BY_POST_ID, {
 		variables: {
@@ -124,7 +124,10 @@ const Post: React.FC<PostProps> = ({ post }) => {
 				<div className="flex items-center space-x-2">
 					<Avatar seed={post?.subreddit[0]?.topic} />
 					<p className="text-xs text-gray-400">
-						<Link href={`/subreddit/${post?.subreddit[0]?.topic}`}>
+						<Link
+							href={`/subreddit/${post?.subreddit[0]?.topic}`}
+							onClick={(e) => e.stopPropagation()}
+						>
 							<span className="font-bold text-black hover:text-blue-400 hover:underline">
 								r/{post?.subreddit[0]?.topic}
 							</span>
