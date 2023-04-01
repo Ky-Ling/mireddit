@@ -86,6 +86,7 @@ const PostItemPage = () => {
 
 					<button
 						type="submit"
+						disabled={!session}
 						className="rounded-full bg-red-500 p-3 font-semibold text-white disabled:bg-gray-200"
 					>
 						Comment

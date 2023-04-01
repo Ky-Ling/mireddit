@@ -1,5 +1,15 @@
 import { gql } from '@apollo/client';
 
+export const GET_SUBREDDITS_WITH_LIMIT = gql`
+	query MyQuery($limit: Int!) {
+		getSubredditListLimit(limit: $limit) {
+			created_at
+			id
+			topic
+		}
+	}
+`;
+
 export const GET_ALL_POSTS = gql`
 	query MyQuery {
 		postList {
