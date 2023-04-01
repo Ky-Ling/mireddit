@@ -41,7 +41,8 @@ const Post: React.FC<PostProps> = ({ post }) => {
 
 	const handlePageRedirect = () => {
 		if (router.query.topic) {
-			router.push(`/post/${post.id}`, `/post/${post.id}`);
+			router.push(`/post/[postId]`, `/post/${post.id}`);
+			return;
 		}
 
 		if (!router.query.postId) {
