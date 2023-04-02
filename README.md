@@ -1,6 +1,6 @@
 ## Reddit Clone Application with Next.js
 
-This is a Reddit clone application built with Next.js that allows users to create posts, view post details, make comments, and view the top communities. Users can log in with their Reddit account to access the features of the application.
+This is a Reddit clone application(learn with Sonny Sangha) built with Next.js that allows users to create posts, view post details, make comments, and view the top communities. Users can log in with their Reddit account to access the features of the application.
 
 ### Key Features
  - User authentication with Reddit account
@@ -16,6 +16,7 @@ This application uses a variety of technologies, including:
  - [TypeScript](https://www.typescriptlang.org/)
  - [StepZen](https://stepzen.com/)
  - [Supabase database](https://supabase.com/)
+ - [Tailwind CSS](https://tailwindcss.com/)
  - [Next-auth](https://next-auth.js.org/)
  - [React-hook-form](https://react-hook-form.com/)
  - [React-hot-toast](https://react-hot-toast.com/)
