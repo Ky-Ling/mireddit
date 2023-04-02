@@ -64,9 +64,12 @@ const PostItemPage = () => {
 			<Post post={post} />
 
 			<div className="-mt-1 rounded-b-md border border-t-0 border-gray-300 bg-white p-5 pl-16">
-				<p className="text-sm mb-1">
-					Comment as <span className="text-red-500">{session?.user?.name}</span>
-				</p>
+				{session && (
+					<p className="text-sm mb-1">
+						Comment as{' '}
+						<span className="text-red-500">{session?.user?.name}</span>
+					</p>
+				)}
 				<form
 					onSubmit={handleSubmit(onSubmit)}
 					className="flex flex-col space-y-2"

@@ -23,13 +23,7 @@ interface PostBoxProps {
 
 const PostBox = ({ subreddit }: PostBoxProps) => {
 	const [imageBoxOpen, setImageBoxOpen] = useState(false);
-	// const { data: session  } = useSession();
-
-	const session = {
-		user: {
-			name: 'Torrid'
-		}
-	}
+	const { data: session  } = useSession();
 
 	const [addPost] = useMutation(ADD_POST, {
 		refetchQueries: [GET_ALL_POSTS, GET_ALL_POSTS_BY_TOPIC, GET_SUBREDDITS_WITH_LIMIT],

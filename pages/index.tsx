@@ -29,7 +29,7 @@ export default function Home() {
 					<p className="text-md mb-1 p-4 pb-3 font-bold">Top Communities</p>
 					{loading ? (
 						<Loading />
-					) : subreddits.length ? (
+					) : subreddits?.length ? (
 						<div>
 							{subreddits?.map((subreddit, i) => (
 								<SubredditRow

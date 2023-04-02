@@ -11,7 +11,7 @@ interface FeedProps {
 }
 
 const Feed = ({ topic }: FeedProps) => {
-	const { data, loading, error } = !topic
+	const { data, loading } = !topic
 		? useQuery(GET_ALL_POSTS)
 		: useQuery(GET_ALL_POSTS_BY_TOPIC, {
 				variables: {
@@ -23,7 +23,7 @@ const Feed = ({ topic }: FeedProps) => {
 
 	return loading ? (
 		<Loading />
-	) : posts.length ? (
+	) : posts?.length ? (
 		<div className="mt-5 space-y-4">
 			{posts?.map((post: any) => (
 				<Post key={post.id} post={post} />
