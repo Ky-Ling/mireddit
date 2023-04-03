@@ -1,38 +1,55 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Reddit Clone Application with Next.js
 
-## Getting Started
+This is a Reddit clone application(learn with Sonny Sangha) built with Next.js that allows users to create posts, view post details, make comments, and view the top communities. Users can log in with their Reddit account to access the features of the application.
 
-First, run the development server:
+### Key Features
+ - User authentication with Reddit account
+ - Create posts with title, body, subreddit, and image URL
+ - View post details and make comments
+ - Top communities module to view the top 10 popular communities
+ - More features will come soon...
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+### Technologies Used
+This application uses a variety of technologies, including:
+ - [Next.js](https://nextjs.org/)
+ - [GraphQL Apollo/client](https://www.apollographql.com/docs/react/)
+ - [TypeScript](https://www.typescriptlang.org/)
+ - [StepZen](https://stepzen.com/)
+ - [Supabase database](https://supabase.com/)
+ - [Tailwind CSS](https://tailwindcss.com/)
+ - [Next-auth](https://next-auth.js.org/)
+ - [React-hook-form](https://react-hook-form.com/)
+ - [React-hot-toast](https://react-hot-toast.com/)
+ - [React-icons](https://react-icons.github.io/react-icons/)
+ - and so on...
+
+### Installation
+To install the application, run the following command in your terminal:
+```
+  npm install
+```
+or
+```
+  yarn install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Running the Application
+To run the application, you will need to follow these steps:
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+1: In the terminal, navigate to the stepzen folder and run the following command:
+```
+  stepzen start
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+2: Open another terminal and navigate to the root folder of the application.
+3: Run the following command:
+```
+  npm run dev
+```
+or 
+```
+  yarn run dev
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Known Issues and Limitations
+The application is still in development, so there may be some issues or limitations that have not yet been identified. If you encounter any issues or have suggestions for improvement, please feel free to reach out to us.
