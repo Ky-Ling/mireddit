@@ -10,7 +10,11 @@ import { BsCameraVideo, BsChatDots, BsBell } from 'react-icons/bs';
 import { RxSpeakerLoud } from 'react-icons/rx';
 import { GiSparkles } from 'react-icons/gi';
 
-const Header: React.FC = () => {
+interface HeaderProps {
+	onSearch: (searchTerm: string) => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ onSearch }) => {
 	const { data: session } = useSession();
 
 	return (
@@ -40,6 +44,7 @@ const Header: React.FC = () => {
 					className="flex-1 bg-transparent outline-none"
 					type="text"
 					placeholder="Search Reddit"
+					onChange={(e) => onSearch(e.target.value)}
 				/>
 				<button hidden type="submit" />
 			</form>

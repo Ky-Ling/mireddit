@@ -10,6 +10,42 @@ export const GET_SUBREDDITS_WITH_LIMIT = gql`
 	}
 `;
 
+export const GET_ALL_POSTS_BY_SEARCH = gql`
+	query MyQuery($search: String!) {
+		getPostListBySearch(search: $search) {
+			body
+			created_at
+			id
+			image
+			title
+			subreddit_id
+			username
+
+			comments {
+				created_at
+				id
+				text
+				post_id
+				username
+			}
+
+			subreddit {
+				created_at
+				id
+				topic
+			}
+
+			votes {
+				created_at
+				id
+				post_id
+				upvote
+				username
+		}	
+	}
+	}
+`;
+
 export const GET_ALL_POSTS = gql`
 	query MyQuery {
 		postList {
