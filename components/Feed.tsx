@@ -8,60 +8,26 @@ import {
 } from '@/graphql/queries';
 import Post from './Post';
 import Loading from './Loading';
-import {
-	POST_LIST_SCHEMA,
-	GET_POST_LIST_BY_TOPIC_SCHEMA,
-	GET_POST_LIST_BY_SEARCH_SCHEMA,
-} from '../constants';
 
 interface FeedProps {
 	topic?: string;
 	searchTerm?: string;
 }
 
-type Fetcher = {
-	fetcher: any;
-	querySchemaName: string;
-};
-// type Fetcher<TData> = {
-// 	fetcher: () => {
-//     data: TData | undefined;
-//     loading: boolean;
-//     error?: ApolloError;
-//   };
-// 	querySchemaName: string;
-// };
-
 const Feed = ({ topic, searchTerm }: FeedProps) => {
-	const getPostDataMap: Record<string, Fetcher> = {
-		default: {
-			fetcher: useQuery(GET_ALL_POSTS),
-			querySchemaName: POST_LIST_SCHEMA,
-		},
-		topic: {
-			fetcher: useQuery(GET_ALL_POSTS_BY_TOPIC, {
-				skip: !topic,
+	const { data, loading } = topic
+		? useQuery(GET_ALL_POSTS_BY_TOPIC, {
 				variables: {
 					topic,
 				},
-			}),
-			querySchemaName: GET_POST_LIST_BY_TOPIC_SCHEMA,
-		},
-		searchTerm: {
-			fetcher: useQuery(GET_ALL_POSTS_BY_SEARCH, {
-				skip: !searchTerm,
+		  })
+		: searchTerm
+		? useQuery(GET_ALL_POSTS_BY_SEARCH, {
 				variables: {
 					search: searchTerm,
 				},
-			}),
-			querySchemaName: GET_POST_LIST_BY_SEARCH_SCHEMA,
-		},
-	};
-
-	const { data, loading } =
-		topic || searchTerm
-			? getPostDataMap[topic ? 'topic' : 'searchTerm'].fetcher
-			: getPostDataMap.default.fetcher;
+		  })
+		: useQuery(GET_ALL_POSTS);
 
 	const posts: Post[] = topic
 		? data?.getPostListByTopic
