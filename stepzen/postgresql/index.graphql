@@ -17,14 +17,14 @@ type post {
 	id: ID!
 	created_at: DateTime
 	comments: [comment] @materializer(query: "getComment")
-	body: String
-}
+	body: String 
+	}
 
 type subreddit {
 	topic: String
 	post: [post] @materializer(query: "getPostUsingPost_subreddit_id_fkey")
 	id: ID!
-	created_at: DateTime
+	created_at: DateTime 
 }
 
 type vote {
@@ -103,9 +103,9 @@ type Query {
 			type: "postgresql"
 			query: """
 			SELECT *, "post".id AS id FROM "post"
-  		WHERE "post"."title" ILIKE '%' || $1 || '%'
-    	OR "post"."body" ILIKE '%' || $1 || '%'
-      ORDER BY "post"."created_at" DESC
+				WHERE "post"."title" ILIKE '%' || $1 || '%'
+			 	OR "post"."body" ILIKE '%' || $1 || '%'
+			   ORDER BY "post"."created_at" DESC
 			"""
 			configuration: "postgresql_config"
 		)
@@ -190,13 +190,13 @@ type Query {
 			configuration: "postgresql_config"
 		)
 
-	getSubredditListLimit(limit: Int!): [subreddit] 
+	getSubredditListLimit(limit: Int!): [subreddit]
 		@dbquery(
-			type: "postgresql",
+			type: "postgresql"
 			query: """
-				select * from "subreddit"
-				order by "created_at" desc
-				limit $1
+			select * from "subreddit"
+			order by "created_at" desc
+			limit $1
 			"""
 			configuration: "postgresql_config"
 		)

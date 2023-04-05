@@ -26,6 +26,14 @@ export const ADD_POST = gql`
 	}
 `;
 
+export const DELETE_POST = gql`
+	mutation MyMutation($id: ID!) {
+		deletePost(id: $id) {
+			id
+		}
+	}
+`;
+
 export const ADD_SUBREDDIT = gql`
 	mutation MyMutation($topic: String!) {
 		insertSubreddit(topic: $topic) {
